@@ -54,7 +54,7 @@ def load_sprite_sheet(
         scaley=-1,
         colorkey=None,
 ):
-    fullname = os.path.join('sprites', sheetname)
+    fullname = os.path.join('assets', sheetname)
     sheet = pygame.image.load(fullname)
     sheet = sheet.convert()
 
