@@ -2,11 +2,13 @@ import os
 import sys
 import pygame
 import random
+import pygame_menu
 from pygame import *
 
 pygame.init()
+myfont = pygame.font.SysFont('Comic Sans MS', 30)
 
-scr_size = (width, height) = (600, 150)
+scr_size = (width, height) = (600, 300)
 FPS = 60
 gravity = 0.6
 
@@ -23,6 +25,24 @@ pygame.display.set_caption("Dino Run Game")
 jump_sound = pygame.mixer.Sound('assets/jump.wav')
 die_sound = pygame.mixer.Sound('assets/die.wav')
 checkPoint_sound = pygame.mixer.Sound('assets/checkPoint.wav')
+
+
+def set_difficulty(value, difficulty):
+    # Do the job here !
+    pass
+
+
+def start_the_game():
+    menu.disable()
+
+
+menu = pygame_menu.Menu(260, 300, 'Welcome',
+                        theme=pygame_menu.themes.THEME_DARK)
+
+menu.add_button('Play', start_the_game)
+menu.add_button('Quit', pygame_menu.events.EXIT)
+
+menu.mainloop(screen)
 
 
 def load_image(
@@ -237,7 +257,7 @@ class Ptera(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.images, self.rect = load_sprite_sheet(
             'ptera.png', 2, 1, sizex, sizey, -1)
-        self.ptera_height = [height*0.82, height*0.75, height*0.60]
+        self.ptera_height = [height*0.87, height*0.80, height*0.65]
         self.rect.centery = self.ptera_height[random.randrange(0, 3)]
         self.rect.left = width + self.rect.width
         self.image = self.images[0]
@@ -342,9 +362,11 @@ def introscreen():
     temp_ground_rect.left = width/20
     temp_ground_rect.bottom = height
 
-    logo, logo_rect = load_image('logo.png', 300, 140, -1)
+    textsurface = myfont.render('Press Space', False, (0, 0, 0))
+
+    logo, logo_rect = load_image('logo.png', 200, 190, -1)
     logo_rect.centerx = width*0.6
-    logo_rect.centery = height*0.6
+    logo_rect.centery = height*0.4
     while not gameStart:
         if pygame.display.get_surface() == None:
             print("Couldn't load display surface")
@@ -366,6 +388,7 @@ def introscreen():
             screen.blit(temp_ground[0], temp_ground_rect)
             if temp_dino.isBlinking:
                 screen.blit(logo, logo_rect)
+                screen.blit(textsurface, (285, 210))
             temp_dino.draw()
 
             pygame.display.update()
