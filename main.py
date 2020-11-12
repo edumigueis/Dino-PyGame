@@ -27,19 +27,26 @@ die_sound = pygame.mixer.Sound('assets/die.wav')
 checkPoint_sound = pygame.mixer.Sound('assets/checkPoint.wav')
 
 
-def set_difficulty(value, difficulty):
-    # Do the job here !
-    pass
-
-
 def start_the_game():
     menu.disable()
 
+def help_screen():
+    #a
+    pass
+
+def about_screen():
+    while(true):
+        textsurface = myfont.render('Press Space', False, (255, 255, 255));
+        screen.blit(textsurface, (0,0))
+ 
+    pygame.display.update()
 
 menu = pygame_menu.Menu(260, 300, 'Welcome',
                         theme=pygame_menu.themes.THEME_DARK)
 
 menu.add_button('Play', start_the_game)
+menu.add_button('Help', help_screen)
+menu.add_button('About', about_screen)
 menu.add_button('Quit', pygame_menu.events.EXIT)
 
 menu.mainloop(screen)
