@@ -19,7 +19,7 @@ background_col = (142, 192, 215)
 
 high_score = 0
 
-screen = pygame.display.set_mode(scr_size)
+screen = pygame.display.set_mode((300, 300))
 clock = pygame.time.Clock()
 pygame.display.set_caption("Dino Run Game")
 
@@ -29,6 +29,7 @@ checkPoint_sound = pygame.mixer.Sound('assets/checkPoint.wav')
 
 
 def start_the_game():
+    screen = pygame.display.set_mode(scr_size)
     isGameQuit = introscreen()
     if not isGameQuit:
         gameplay()
@@ -36,6 +37,7 @@ def start_the_game():
 
 
 def help_screen():
+    screen = pygame.display.set_mode(scr_size)
     menu.disable()
     backToMenu = False
     while not backToMenu:
@@ -47,6 +49,7 @@ def help_screen():
                 if event.type == pygame.QUIT:
                     return True
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+                    screen = pygame.display.set_mode((300, 300))
                     backToMenu = True
                     menu.enable()
 
@@ -71,6 +74,7 @@ def help_screen():
 
 
 def about_screen():
+    screen = pygame.display.set_mode(scr_size)
     menu.disable()
     backToMenu = False
     while not backToMenu:
@@ -82,6 +86,7 @@ def about_screen():
                 if event.type == pygame.QUIT:
                     return True
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+                    screen = pygame.display.set_mode((300, 300))
                     backToMenu = True
                     menu.enable()
 
@@ -112,8 +117,8 @@ def about_screen():
         clock.tick(FPS)
 
 
-menu = pygame_menu.Menu(260, 300, 'Welcome',
-                        theme=pygame_menu.themes.THEME_DARK)
+menu = pygame_menu.Menu(300, 300, 'Welcome',
+                        theme=pygame_menu.themes.THEME_DEFAULT)
 
 menu.add_button('Play', start_the_game)
 menu.add_button('Help', help_screen)
@@ -643,5 +648,6 @@ def gameplay():
 
 def main():
     menu.mainloop(screen)
+
 
 main()
