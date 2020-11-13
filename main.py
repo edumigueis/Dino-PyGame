@@ -28,18 +28,57 @@ checkPoint_sound = pygame.mixer.Sound('assets/checkPoint.wav')
 
 
 def start_the_game():
+    isGameQuit = introscreen()
+    if not isGameQuit:
+        gameplay()
     menu.disable()
 
+
 def help_screen():
-    #a
-    pass
+    menu.disable()
+    backToMenu = False
+    while not backToMenu:
+        if pygame.display.get_surface() == None:
+            print("Couldn't load display surface")
+            return True
+        else:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return True
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+                    backToMenu = True
+                    menu.enable()
+
+        if pygame.display.get_surface() != None:
+            screen.fill(background_col)
+            txt = myfont.render("Press Space", False, (0, 0, 0))
+            screen.blit(txt, (0, 0))
+            pygame.display.update()
+        clock.tick(FPS)
+
 
 def about_screen():
-    while(true):
-        textsurface = myfont.render('Press Space', False, (255, 255, 255));
-        screen.blit(textsurface, (0,0))
- 
-    pygame.display.update()
+    menu.disable()
+    backToMenu = False
+    while not backToMenu:
+        if pygame.display.get_surface() == None:
+            print("Couldn't load display surface")
+            return True
+        else:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return True
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+                    backToMenu = True
+                    menu.enable()
+
+        if pygame.display.get_surface() != None:
+            screen.fill(background_col)
+            txt = myfont.render('Press Space', False, (0, 0, 0))
+            screen.blit(txt, (0, 0))
+            pygame.display.update()
+        clock.tick(FPS)
+
 
 menu = pygame_menu.Menu(260, 300, 'Welcome',
                         theme=pygame_menu.themes.THEME_DARK)
@@ -48,8 +87,6 @@ menu.add_button('Play', start_the_game)
 menu.add_button('Help', help_screen)
 menu.add_button('About', about_screen)
 menu.add_button('Quit', pygame_menu.events.EXIT)
-
-menu.mainloop(screen)
 
 
 def load_image(
@@ -573,9 +610,7 @@ def gameplay():
 
 
 def main():
-    isGameQuit = introscreen()
-    if not isGameQuit:
-        gameplay()
+    menu.mainloop(screen)
 
 
 main()
