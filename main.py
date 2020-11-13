@@ -54,13 +54,17 @@ def help_screen():
             screen.fill(white)
             title = myfont.render("Help", True, (0, 0, 0))
             screen.blit(title, (20, 10))
-            txt = arial.render("When in the main menu, select play and press space or arrow up. To play,", True, (0, 0, 0))
+            txt = arial.render(
+                "When in the main menu, select play and press space or arrow up. To play,", True, (0, 0, 0))
             screen.blit(txt, (20, 60))
-            txt = arial.render("press arrow up or w or space to jump and arrow down or s to crouch. You have to", True, (0,0,0))
+            txt = arial.render(
+                "press arrow up or w or space to jump and arrow down or s to crouch. You have to", True, (0, 0, 0))
             screen.blit(txt, (20, 80))
-            txt = arial.render("jump to not hit the cactus and crouch to not hit the pterodactyls who fly low.", True, (0,0,0))
+            txt = arial.render(
+                "jump to not hit the cactus and crouch to not hit the pterodactyls who fly low.", True, (0, 0, 0))
             screen.blit(txt, (20, 100))
-            title = arial.render("Press enter to go back to main menu", True, (0, 0, 0))
+            title = arial.render(
+                "Press enter to go back to main menu", True, (0, 0, 0))
             screen.blit(title, (20, 250))
             pygame.display.update()
         clock.tick(FPS)
@@ -85,16 +89,25 @@ def about_screen():
             screen.fill(white)
             title = myfont.render("About", True, (0, 0, 0))
             screen.blit(title, (20, 10))
-            txt = arial.render("Dinosaur Game, also known as T-Rex Game and Dino Runner, is an in-built game in the", True, (0,0,0))
+            txt = arial.render(
+                "Dinosaur Game, also known as T-Rex Game and Dino Runner, is an in-built game in the", True, (0, 0, 0))
             screen.blit(txt, (20, 60))
-            txt = arial.render("Google Chrome browser. It can be accessed when offline. The creation of the game is to", True, (0,0,0))
+            txt = arial.render(
+                "Google Chrome browser. It can be accessed when offline. The creation of the game is to", True, (0, 0, 0))
             screen.blit(txt, (20, 80))
-            title = arial.render("reference prehistoric times when going offline. This game was inpired by the Google", True, (0, 0, 0))
+            title = arial.render(
+                "reference prehistoric times when going offline. This game was inpired by the Google", True, (0, 0, 0))
             screen.blit(title, (20, 100))
-            title = arial.render("Chrome dino and made in pygame by Eduardo Migueis and Rodrigo Smith", True, (0, 0, 0))
+            title = arial.render(
+                "Chrome dino and made in pygame by Eduardo Migueis and Rodrigo Smith", True, (0, 0, 0))
             screen.blit(title, (20, 120))
-            title = arial.render("Press enter to go back to main menu", True, (0, 0, 0))
+            title = arial.render(
+                "Press enter to go back to main menu", True, (0, 0, 0))
             screen.blit(title, (20, 250))
+            img, img_rect = load_image('about-img.png', 160, 160, -1)
+            img_rect.centerx = width*0.85
+            img_rect.centery = height*0.75
+            screen.blit(img, img_rect)
             pygame.display.update()
         clock.tick(FPS)
 
@@ -630,6 +643,5 @@ def gameplay():
 
 def main():
     menu.mainloop(screen)
-
 
 main()
