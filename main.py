@@ -7,13 +7,14 @@ from pygame import *
 
 pygame.init()
 myfont = pygame.font.SysFont('Comic Sans MS', 30)
+arial = pygame.font.SysFont('Arial', 18)
 
 scr_size = (width, height) = (600, 300)
 FPS = 60
 gravity = 0.6
 
 black = (0, 0, 0)
-white = (255, 255, 255)
+white = (240, 240, 240)
 background_col = (142, 192, 215)
 
 high_score = 0
@@ -50,9 +51,17 @@ def help_screen():
                     menu.enable()
 
         if pygame.display.get_surface() != None:
-            screen.fill(background_col)
-            txt = myfont.render("Press Space", False, (0, 0, 0))
-            screen.blit(txt, (0, 0))
+            screen.fill(white)
+            title = myfont.render("Help", True, (0, 0, 0))
+            screen.blit(title, (20, 10))
+            txt = arial.render("When in the main menu, select play and press space or arrow up. To play,", True, (0, 0, 0))
+            screen.blit(txt, (20, 60))
+            txt = arial.render("press arrow up or w or space to jump and arrow down or s to crouch. You have to", True, (0,0,0))
+            screen.blit(txt, (20, 80))
+            txt = arial.render("jump to not hit the cactus and crouch to not hit the pterodactyls who fly low.", True, (0,0,0))
+            screen.blit(txt, (20, 100))
+            title = arial.render("Press enter to go back to main menu", True, (0, 0, 0))
+            screen.blit(title, (20, 250))
             pygame.display.update()
         clock.tick(FPS)
 
@@ -73,9 +82,19 @@ def about_screen():
                     menu.enable()
 
         if pygame.display.get_surface() != None:
-            screen.fill(background_col)
-            txt = myfont.render('Press Space', False, (0, 0, 0))
-            screen.blit(txt, (0, 0))
+            screen.fill(white)
+            title = myfont.render("About", True, (0, 0, 0))
+            screen.blit(title, (20, 10))
+            txt = arial.render("Dinosaur Game, also known as T-Rex Game and Dino Runner, is an in-built game in the", True, (0,0,0))
+            screen.blit(txt, (20, 60))
+            txt = arial.render("Google Chrome browser. It can be accessed when offline. The creation of the game is to", True, (0,0,0))
+            screen.blit(txt, (20, 80))
+            title = arial.render("reference prehistoric times when going offline. This game was inpired by the Google", True, (0, 0, 0))
+            screen.blit(title, (20, 100))
+            title = arial.render("Chrome dino and made in pygame by Eduardo Migueis and Rodrigo Smith", True, (0, 0, 0))
+            screen.blit(title, (20, 120))
+            title = arial.render("Press enter to go back to main menu", True, (0, 0, 0))
+            screen.blit(title, (20, 250))
             pygame.display.update()
         clock.tick(FPS)
 
@@ -406,7 +425,7 @@ def introscreen():
     temp_ground_rect.left = width/20
     temp_ground_rect.bottom = height
 
-    textsurface = myfont.render('Press Space', False, (0, 0, 0))
+    textsurface = myfont.render('Press Space', True, (0, 0, 0))
 
     logo, logo_rect = load_image('logo.png', 200, 190, -1)
     logo_rect.centerx = width*0.6
