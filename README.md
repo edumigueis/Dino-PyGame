@@ -12,7 +12,7 @@ The famous dino arcade in PyGame. Inspired by Google Chrome's dino, this project
 
 To run this project you need python in a recent version and pip to install both pygame and pygame_menu. Create a directory in the project folder and run:
 
-```py
+```
 cd Dino-PyGame
 pip install pygame
 pip install pygame_menu
