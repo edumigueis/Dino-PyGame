@@ -3,6 +3,8 @@
 
 The famous dino arcade in PyGame. Inspired by Google Chrome's dino, this project presents a complete dino game, with a main menu and multiple screens. Made with pygame in python.
 
+![](header1.png)
+
 - This app can show multiple screens that load from the main menu.
 - The game itself in the play screen  is a fully-featured dino game.
 - The dinosaur can jump and craw, actions triggered by respectively space/w/up and s/down.
